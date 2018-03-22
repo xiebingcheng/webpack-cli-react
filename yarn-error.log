@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn run dev
+  /usr/local/bin/node /usr/local/bin/yarn run dist
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -39,7 +39,7 @@ npm manifest:
       "react": "^16.2.0",
       "react-dom": "^16.2.0"
     },
-    "scripts": { //sdn
+    "scripts": {
       "dev"       : "node_modules/.bin/webpack-dev-server",
       "dist"      : "WEBPACK_ENV=online node_modules/.bin/webpack -p",
       "dist_win"  : "set WEBPACK_ENV=online&& node_modules/.bin/webpack -p"
@@ -5700,10 +5700,17 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  SyntaxError: /Users/xiexie/react/my-react1/package.json: Unexpected token / in JSON at position 641
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:1036:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
-      at <anonymous>
+  Error: Command failed.
+  Exit code: 2
+  Command: sh
+  Arguments: -c WEBPACK_ENV=online node_modules/.bin/webpack -p
+  Directory: /Users/xiexie/react/my-react1
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

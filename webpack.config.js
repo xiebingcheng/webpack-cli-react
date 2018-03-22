@@ -13,11 +13,18 @@ const config = {
     entry: './src/app.jsx',
     //输出
     output: {
-        //打包文件 放在 dist 文件夹里
+        //打包文件 放在根目录 dist 文件夹里
         path: path.resolve(__dirname, 'dist'),
         //编译生成的js文件存放到根目录下面的js目录下面,如果js目录不存在则自动创建
         filename: 'js/app.min.js',
         publicPath: "/dist/"
+    },
+    //单独配置组件的存放位置,使得以后更改文件位置不需要一个文件一个文件的更改路径
+    resolve:{
+        alias:{
+            // __dirname 是根目录的意思.
+            page:path.resolve(__dirname,'src/page')
+        }
     },
 
     module: {
@@ -87,7 +94,7 @@ const config = {
     devServer: {
         contentBase: './dist',
         //更改默认端口号
-        port:8086
+        port:8088
     },
 
 };
