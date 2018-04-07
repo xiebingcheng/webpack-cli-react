@@ -10,7 +10,8 @@ class Homeindex extends React.Component {
         return (
             <div>
                 <h1 className='homeh'>这个是homeindex的文字!</h1>
-                <div>试试这个 from home组件过来.</div>
+                <div>这下面两句话是 来着home组件的.</div>
+                <p>而且已经用上了react提供的react-router-dom的组件,就是react的路由组件.</p>
 
             </div>
 

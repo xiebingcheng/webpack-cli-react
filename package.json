@@ -21,11 +21,12 @@
   },
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router-dom": "4.2.2"
   },
   "scripts": {
-    "dev"       : "node_modules/.bin/webpack-dev-server",
-    "dist"      : "WEBPACK_ENV=online node_modules/.bin/webpack -p",
-    "dist_win"  : "set WEBPACK_ENV=online&& node_modules/.bin/webpack -p"
+    "dev": "node_modules/.bin/webpack-dev-server",
+    "dist": "WEBPACK_ENV=online node_modules/.bin/webpack -p",
+    "dist_win": "set WEBPACK_ENV=online&& node_modules/.bin/webpack -p"
   }
 }

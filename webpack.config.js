@@ -7,6 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //css插件 整合进link标签 引入 css
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+//判断是否为线上环境
+let WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
 const config = {
     //设置入口文件
@@ -18,12 +20,17 @@ const config = {
         //编译生成的js文件存放到根目录下面的js目录下面,如果js目录不存在则自动创建
         filename: 'js/app.min.js',
         publicPath: "/dist/"
+        
+        // publicPath: WEBPACK_ENV === 'dev'
+        //     ? '/dist/' : '//www.baidu.com/admin-v2-fe/dist/',
+        //如果是发布环境,则需要把上面的地址更改到对应的项目地址即可
     },
     //单独配置组件的存放位置,使得以后更改文件位置不需要一个文件一个文件的更改路径
-    resolve:{
-        alias:{
+    resolve: {
+        alias: {
             // __dirname 是根目录的意思.
-            page:path.resolve(__dirname,'src/page')
+            page: path.resolve(__dirname, 'src/page'),
+            component: path.resolve(__dirname, 'src/component')
         }
     },
 
@@ -90,11 +97,26 @@ const config = {
             filename: 'js/base.js'
         })
     ],
-       //webpack-dev-server 配置 热更新及本地服务器需要的配置.
+    //webpack-dev-server 配置 热更新及本地服务器需要的配置.
     devServer: {
         contentBase: './dist',
         //更改默认端口号
-        port:8088
+        port: 8088,
+        //设置 不存在的地址 跳转到 特定的地址
+        historyApiFallback: {
+            index: '/dist/index.html'
+        },
+        
+        // proxy:{
+        //     //解决项目的跨域问题
+        //     //项目的url开头
+        //     '/manage':{
+        //         //需要代理的 地址头
+        //         target:'http://www.baidu.com',
+        //         //此参数 发出代理,让后台认为是target的地址发出的请求. 伪装上面的地址发出的请求.
+        //         changeOrigin: true
+        //     }
+        // }
     },
 
 };
